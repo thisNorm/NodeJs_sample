@@ -46,7 +46,7 @@ let zoo = [new Rhino(), new Elephant(), new Snake()];
 // 2. 명시적 타입 지정(Explict Types)
 
 // This is an industrial-grade general-purpose greeter function:
-function greet(person:string, data:Date) {
+function greet(person:string, date:Date) {
     console.log(`Hello ${person}, today is ${date}"`);
 }
 
