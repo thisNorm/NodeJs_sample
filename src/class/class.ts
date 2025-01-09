@@ -1,14 +1,22 @@
 // Class 이용
 class Robot { // Members
     // Property 또는 Field(속성, 필드)
-    name: string;
-    model: string;
-    status: string = "Active";
+    private name: string;
+    private model: string;
+    protected status: string = "Active";
 
     // Constructor(생성자)
     constructor(name: string, model: string) {
         this.name = name; 
         this.model = model;
+    };
+
+    // Getter for name
+    public getName(): string {
+        return this.name;
+    }
+    public getModel(): string {
+        return this.model;
     }
 
     // Method(행동)
@@ -28,9 +36,9 @@ let r2 = new Robot("R5-AA3", "Bumble");
 let r3 = new Robot("Ad-aD1", "Rotus");
 
 // Accessing fields and Calling methods
-console.log(r1.name);
-console.log(r2.model);
-console.log(r3.status);
+console.log(r1.getName());
+console.log(r2.getModel());
+//sole.log(r3.status);
 
 r1.performTask("Charging");
 r2.performTask("Explorering");
@@ -88,7 +96,7 @@ class CleaningRobot extends Robot { // Members
     cleaningSchedule: string[];
 
     // Constructor(생성자)
-    constructor(name: string, cleaningSchedule: string[], model: string) {
+    constructor(name: string, model: string, cleaningSchedule: string[]) {
         super(name, model);
         this.cleaningSchedule = cleaningSchedule;
     }
@@ -96,7 +104,7 @@ class CleaningRobot extends Robot { // Members
     // Method(행동)
     // performTask() {
     override performTask() {
-        console.log(`${this.name} is cleaning according to the schedule ${this.cleaningSchedule.join(", ")}.`);
+        console.log(`${this.getName()} is cleaning according to the schedule ${this.cleaningSchedule.join(", ")}.`);
     }
 }
 
@@ -113,6 +121,19 @@ class CookingRobot extends Robot { // Members
 
     // Method(행동)
     override performTask() {
-        console.log(`${this.name} is Cooking according to the menus ${this.availableMenus.join(", ")}.`);
+        console.log(`${this.getName()} is Cooking according to the menus ${this.availableMenus.join(", ")}.`);
     }
 }
+
+
+// 접근 제어자 Visivility Modifier / Access Modifier
+// public - protected - private
+// (default)
+// public : 모든 클래스에서 접근 가능(기본값)
+// protected : 같은 클래스와 자식 클래스에서 접근 가능
+// private : 해당 클래스 내에서만 접근 가능능
+
+let c1 = new CleaningRobot("ABC-1", "Prime", ["Sun", "Mon"]);
+console.log(c1.cleaningSchedule);
+c1.performTask();
+console.log(c1.getName());
