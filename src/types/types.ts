@@ -134,36 +134,65 @@ interface Point {
 // console.log(bear.honey);
 
 // Type Alias의 확장 예시
-type Animal = {
-    name: string;
-}
+// type Animal = {
+//     name: string;
+// }
 
-type Bear = Animal & {
-    honey: boolean;
-}
+// type Bear = Animal & {
+//     honey: boolean;
+// }
 
-function getBear(): Bear {
-    return {
-        name: "곰",
-        honey: true
-    };
-}
-
-const bear = getBear();
-console.log(Bear.name) // from Animal type
-console.log(Bear.honey)
+// function getBear(): Bear {
+//     return {
+//         name: "Grizzly",
+//         honey: true,
+//     };
+// }
+// const bear = getBear();
+// console.log(Bear.name) // from Animal type
+// console.log(Bear.honey)
 
 // 인터페이스 병합의 차이점
-
 interface Job {
     title: string;
 }
-
 interface Job { // type으로 변경하면 중복 코드 오류가 발생생
     company: string;
 }
 
 const myJob: Job = {
-    title: "SW Engineer",
+title: "SW Engineer",
     company: "Tech",
 }
+
+// 타입 단언 Type Assertions
+const apiResponse: any = {
+    id: 1,
+    title: "TypeScript Begins",
+    content: "This is contents of Article",
+};
+
+// // Error 지만 찾지 못하는 경우(any)
+// console.log(apiResponse.like);
+
+interface Content {
+    id: number;
+    title: string;
+    content: string;
+}
+
+// Type assertions using 'as' keyword
+const content1 = apiResponse as Content;
+// Type assertions using <> bracket syntax
+const content2 = <Content>apiResponse;
+
+// console.log(content1.like); // like does not exist
+console.log(content2.id); //OK
+console.log(content2.content); //OK
+
+// 리터럴 타입
+function printText( s: string, alignment: "left" | "right" | "center") {
+    //...
+}
+printText("Hello, world", "left");
+// printText("Hello, world", "centre"); // 특정 값을 타입화 하는것이지만, 재사용성이 떨어져서 다음으로 대체한다.
