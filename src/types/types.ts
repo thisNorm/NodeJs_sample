@@ -142,6 +142,28 @@ type Bear = Animal & {
     honey: boolean;
 }
 
-function getBear();
-console.log(getBear.name) // from Animal type
-console.log(getBear.honey)
+function getBear(): Bear {
+    return {
+        name: "곰",
+        honey: true
+    };
+}
+
+const bear = getBear();
+console.log(Bear.name) // from Animal type
+console.log(Bear.honey)
+
+// 인터페이스 병합의 차이점
+
+interface Job {
+    title: string;
+}
+
+interface Job { // type으로 변경하면 중복 코드 오류가 발생생
+    company: string;
+}
+
+const myJob: Job = {
+    title: "SW Engineer",
+    company: "Tech",
+}
