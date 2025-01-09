@@ -103,7 +103,45 @@ function calulateDistance(point1: Point, point2: Point):number {
 printCoord({ x:100, y:100 });
 // 해당 객체의 속성이 같다면,, 하지만 파라미터가 point1,2,3 ... 255까지 늘어난다면 계속해서 중복코드가 늘어남
 
-type Point = {
+// 사용자 정의 타입을 사용 할 수 있음
+//type Point = {
+//    x: number,
+//    y: number
+//}
+interface Point {
     x: number,
     y: number
 }
+// 개방 폐쇄의 원칙에 유리하다라고 했기 때문에
+// 예시
+// interface Animal {
+//     name: string;
+// }
+
+// interface Bear extends Animal {
+//     honey: boolean;
+// }
+
+// function getBear(): Bear {
+//     return {
+//         name: "Grizzly",
+//         honey: true
+//     };
+// }
+
+// const bear = getBear();
+// console.log(bear.name); // from Animal
+// console.log(bear.honey);
+
+// Type Alias의 확장 예시
+type Animal = {
+    name: string;
+}
+
+type Bear = Animal & {
+    honey: boolean;
+}
+
+function getBear();
+console.log(getBear.name) // from Animal type
+console.log(getBear.honey)

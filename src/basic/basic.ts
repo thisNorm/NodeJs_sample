@@ -30,17 +30,17 @@ function flipCoin() {
 let x = 3;
 // x = [0, 1, null];
 
-class Animal {}
-class Rhino extends Animal {
-    hasHorn: boolean = true;
-}
-class Elephant extends Animal {
-    hasTrunk: boolean = true;
-}class Snake extends Animal {
-    hasLegs: boolean = false;
-}
+// class Animal {}
+// class Rhino extends Animal {
+//     hasHorn: boolean = true;
+// }
+// class Elephant extends Animal {
+//     hasTrunk: boolean = true;
+// }class Snake extends Animal {
+//     hasLegs: boolean = false;
+// }
 
-let zoo = [new Rhino(), new Elephant(), new Snake()];
+// let zoo = [new Rhino(), new Elephant(), new Snake()];
 // Animal[]
 
 // 2. 명시적 타입 지정(Explict Types)
