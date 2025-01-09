@@ -65,3 +65,12 @@ function printName(user: { first:string, last?:string}) {
 }
 
 printName({ first: "Bob" });
+
+// Any 타입
+let object: any = { x: 0 };
+
+object.foo();
+object();
+object.bar = 100;
+object = "hello";
+const n: number = object;
